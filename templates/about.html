@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+
+{% block title %}About - ELSS Calculator{% endblock %}
+
+{% block content %}
+<div class="about-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="text-center mb-5">
+                    <h1 class="display-4 fw-bold text-primary mb-4">
+                        <i class="fas fa-shield-alt me-3"></i>About ELSS Calculator
+                    </h1>
+                    <p class="lead text-muted">
+                        Understanding Equity Linked Savings Schemes and how our calculator helps you maximize tax savings while building wealth.
+                    </p>
+                </div>
+
+                <div class="card border-0 shadow-lg mb-5">
+                    <div class="card-body p-5">
+                        <h2 class="fw-bold text-primary mb-4">
+                            <i class="fas fa-question-circle me-2"></i>What is ELSS?
+                        </h2>
+                        <p class="text-muted mb-4">
+                            Equity Linked Savings Scheme (ELSS) is a type of mutual fund that invests primarily in equity and equity-related instruments. 
+                            ELSS funds offer tax benefits under Section 80C of the Income Tax Act, making them a popular choice for tax-saving investments. 
+                            These funds have a mandatory lock-in period of 3 years, the shortest among all tax-saving investment options.
+                        </p>
+                        
+                        <h3 class="fw-bold text-success mb-3">
+                            <i class="fas fa-star me-2"></i>Benefits of ELSS
+                        </h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li class="mb-3">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <strong>Tax Savings:</strong> Deduction up to ₹1.5 lakh under Section 80C
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <strong>Shortest Lock-in:</strong> Only 3 years among tax-saving options
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <strong>Potential for High Returns:</strong> Equity exposure for long-term growth
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li class="mb-3">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <strong>SIP Option:</strong> Invest systematically from ₹500/month
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <strong>Lump Sum Option:</strong> One-time investment flexibility
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <strong>Tax-free Gains:</strong> Long-term capital gains are tax-free
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-lg mb-5">
+                    <div class="card-body p-5">
+                        <h2 class="fw-bold text-primary mb-4">
+                            <i class="fas fa-percent me-2"></i>Tax Benefits & Calculations
+                        </h2>
+                        <p class="text-muted mb-4">
+                            ELSS investments are eligible for tax deduction under Section 80C of the Income Tax Act. 
+                            You can claim deduction up to ₹1,50,000 per financial year.
+                        </p>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="alert alert-info">
+                                    <h5><i class="fas fa-info-circle me-2"></i>Tax Saving Example</h5>
+                                    <p class="mb-1"><strong>Investment:</strong> ₹1,50,000</p>
+                                    <p class="mb-1"><strong>Tax Bracket:</strong> 30%</p>
+                                    <p class="mb-0"><strong>Tax Saved:</strong> ₹45,000</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="alert alert-success">
+                                    <h5><i class="fas fa-calculator me-2"></i>Effective Cost</h5>
+                                    <p class="mb-1"><strong>Investment:</strong> ₹1,50,000</p>
+                                    <p class="mb-1"><strong>Less: Tax Saved:</strong> ₹45,000</p>
+                                    <p class="mb-0"><strong>Net Cost:</strong> ₹1,05,000</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="fw-bold text-warning mb-3">
+                            <i class="fas fa-lock me-2"></i>Lock-in Period
+                        </h3>
+                        <p class="text-muted">
+                            ELSS funds have a mandatory lock-in period of 3 years from the date of investment. 
+                            This means you cannot redeem your investment before 3 years. However, this is the 
+                            shortest lock-in period among all Section 80C investment options.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-lg mb-5">
+                    <div class="card-body p-5">
+                        <h2 class="fw-bold text-primary mb-4">
+                            <i class="fas fa-calculator me-2"></i>How Our Calculator Works
+                        </h2>
+                        <p class="text-muted mb-4">
+                            Our ELSS calculator provides calculations for both SIP and Lump Sum investments, 
+                            including tax savings calculations:
+                        </p>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="formula-box bg-light p-4 rounded mb-4">
+                                    <h5 class="text-center mb-3">SIP Formula</h5>
+                                    <p class="text-center mb-0 fw-bold">
+                                        FV = P × [((1 + r)^n - 1) / r] × (1 + r)
+                                    </p>
+                                    <div class="mt-3">
+                                        <small class="text-muted">
+                                            <strong>FV</strong> = Future Value<br>
+                                            <strong>P</strong> = Monthly Investment<br>
+                                            <strong>r</strong> = Monthly Rate of Return<br>
+                                            <strong>n</strong> = Number of Months
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="formula-box bg-light p-4 rounded mb-4">
+                                    <h5 class="text-center mb-3">Lump Sum Formula</h5>
+                                    <p class="text-center mb-0 fw-bold">
+                                        FV = P × (1 + r)^n
+                                    </p>
+                                    <div class="mt-3">
+                                        <small class="text-muted">
+                                            <strong>FV</strong> = Future Value<br>
+                                            <strong>P</strong> = Principal Amount<br>
+                                            <strong>r</strong> = Annual Rate of Return<br>
+                                            <strong>n</strong> = Number of Years
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="fw-bold text-success mb-3">
+                            <i class="fas fa-chart-line me-2"></i>Calculator Features
+                        </h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-arrow-right text-primary me-2"></i>
+                                Toggle between SIP and Lump Sum investment modes
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-arrow-right text-primary me-2"></i>
+                                Automatic tax savings calculation under Section 80C
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-arrow-right text-primary me-2"></i>
+                                Interactive charts showing growth and tax savings
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-arrow-right text-primary me-2"></i>
+                                Year-wise breakdown of investments, returns, and tax benefits
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-arrow-right text-primary me-2"></i>
+                                Responsive design optimized for all devices
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg rounded-3">
+                        <i class="fas fa-calculator me-2"></i>Try the ELSS Calculator
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

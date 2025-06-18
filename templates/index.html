@@ -1,0 +1,282 @@
+{% extends "base.html" %}
+
+{% block title %}ELSS Calculator - Plan Your Tax-Saving Investments{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="container">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <h1 class="display-4 fw-bold mb-4" style="color: #0891b2;">
+                        <i class="fas fa-shield-alt me-3"></i>ELSS Calculator
+                    </h1>
+                    <p class="lead text-muted mb-4">
+                        Calculate your Equity Linked Savings Scheme (ELSS) returns and tax savings under Section 80C. 
+                        Choose between SIP and Lump Sum investments to maximize your tax benefits while building wealth.
+                    </p>
+                    <div class="key-features">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="feature-item mb-3">
+                                    <i class="fas fa-percent text-success me-2"></i>
+                                    <span>Tax Savings up to ₹46,800</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="feature-item mb-3">
+                                    <i class="fas fa-clock text-primary me-2"></i>
+                                    <span>3-Year Lock-in Period</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="calculator-card">
+                    <div class="card shadow-lg border-0 rounded-4">
+                        <div class="card-header bg-gradient-primary text-white rounded-top-4">
+                            <h3 class="card-title mb-0 text-center">
+                                <i class="fas fa-calculator me-2"></i>Calculate Your ELSS Returns
+                            </h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Investment Type Toggle -->
+                            <div class="mb-4">
+                                <label class="form-label fw-semibold">
+                                    <i class="fas fa-toggle-on me-2 text-primary"></i>Investment Type
+                                </label>
+                                <div class="btn-group w-100" role="group" id="investmentTypeToggle">
+                                    <input type="radio" class="btn-check" name="investmentType" id="sipType" value="SIP" checked>
+                                    <label class="btn btn-outline-primary" for="sipType">
+                                        <i class="fas fa-calendar-check me-1"></i>SIP (Monthly)
+                                    </label>
+                                    
+                                    <input type="radio" class="btn-check" name="investmentType" id="lumpSumType" value="Lump Sum">
+                                    <label class="btn btn-outline-primary" for="lumpSumType">
+                                        <i class="fas fa-hand-holding-usd me-1"></i>Lump Sum
+                                    </label>
+                                </div>
+                            </div>
+
+                            <form id="elssForm">
+                                <!-- SIP Investment Fields -->
+                                <div id="sipFields">
+                                    <div class="mb-4">
+                                        <label for="monthlyInvestment" class="form-label fw-semibold">
+                                            <i class="fas fa-rupee-sign me-2 text-primary"></i>Monthly Investment
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light">₹</span>
+                                            <input type="number" class="form-control form-control-lg" 
+                                                   id="monthlyInvestment" placeholder="5000" min="500" step="100" value="5000">
+                                        </div>
+                                        <small class="form-text text-muted">Minimum ₹500 per month</small>
+                                    </div>
+                                </div>
+
+                                <!-- Lump Sum Investment Fields -->
+                                <div id="lumpSumFields" class="d-none">
+                                    <div class="mb-4">
+                                        <label for="lumpSumAmount" class="form-label fw-semibold">
+                                            <i class="fas fa-rupee-sign me-2 text-primary"></i>Lump Sum Amount
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light">₹</span>
+                                            <input type="number" class="form-control form-control-lg" 
+                                                   id="lumpSumAmount" placeholder="50000" min="1000" step="1000" value="50000">
+                                        </div>
+                                        <small class="form-text text-muted">Minimum ₹1,000</small>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="annualRate" class="form-label fw-semibold">
+                                        <i class="fas fa-chart-line me-2 text-success"></i>Expected Annual Return
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control form-control-lg" 
+                                               id="annualRate" placeholder="12" min="8" max="20" step="0.1" value="12">
+                                        <span class="input-group-text bg-light">%</span>
+                                    </div>
+                                    <small class="form-text text-muted">Typical range: 10-15% for ELSS funds</small>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="years" class="form-label fw-semibold">
+                                        <i class="fas fa-calendar-alt me-2 text-warning"></i>Investment Period
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control form-control-lg" 
+                                               id="years" placeholder="10" min="3" max="50" value="10">
+                                        <span class="input-group-text bg-light">Years</span>
+                                    </div>
+                                    <small class="form-text text-muted">Minimum 3 years (lock-in period)</small>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-lg w-100 rounded-3">
+                                    <i class="fas fa-chart-bar me-2"></i>Calculate ELSS Returns & Tax Savings
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Results Section -->
+<div class="results-section d-none" id="resultsSection">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center mb-5 fw-bold">
+                    <i class="fas fa-chart-line me-2" style="color: #10b981;"></i>Your ELSS Investment Results
+                </h2>
+            </div>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="row mb-5">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card summary-card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div class="summary-icon bg-primary-light mb-3">
+                            <i class="fas fa-piggy-bank text-primary"></i>
+                        </div>
+                        <h6 class="card-title text-muted">Total Investment</h6>
+                        <h4 class="card-text fw-bold" style="color: #0891b2;" id="totalInvestment">₹0</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card summary-card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div class="summary-icon bg-success-light mb-3">
+                            <i class="fas fa-chart-line text-success"></i>
+                        </div>
+                        <h6 class="card-title text-muted">Total Returns</h6>
+                        <h4 class="card-text fw-bold" style="color: #10b981;" id="totalReturns">₹0</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card summary-card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div class="summary-icon bg-warning-light mb-3">
+                            <i class="fas fa-trophy text-warning"></i>
+                        </div>
+                        <h6 class="card-title text-muted">Final Amount</h6>
+                        <h4 class="card-text fw-bold" style="color: #fb923c;" id="finalAmount">₹0</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card summary-card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div class="summary-icon bg-info-light mb-3">
+                            <i class="fas fa-percent text-info"></i>
+                        </div>
+                        <h6 class="card-title text-muted">Tax Savings</h6>
+                        <h4 class="card-text fw-bold" style="color: #06b6d4;" id="taxSavings">₹0</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Investment Summary -->
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-light">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-info-circle me-2"></i>Investment Summary
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="summary-details">
+                            <div class="row mb-2">
+                                <div class="col-6">Investment Type:</div>
+                                <div class="col-6 fw-bold" id="investmentTypeSummary">-</div>
+                            </div>
+                            <div class="row mb-2" id="monthlyAmountRow">
+                                <div class="col-6">Monthly Amount:</div>
+                                <div class="col-6 fw-bold" id="monthlyAmountSummary">-</div>
+                            </div>
+                            <div class="row mb-2" id="lumpSumAmountRow" style="display: none;">
+                                <div class="col-6">Lump Sum Amount:</div>
+                                <div class="col-6 fw-bold" id="lumpSumAmountSummary">-</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-6">Expected Returns:</div>
+                                <div class="col-6 fw-bold" id="expectedReturnsSummary">-</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-6">Investment Period:</div>
+                                <div class="col-6 fw-bold" id="investmentPeriodSummary">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-light">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-shield-alt me-2"></i>Tax Benefits (Section 80C)
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="tax-benefits">
+                            <div class="alert alert-info">
+                                <i class="fas fa-lightbulb me-2"></i>
+                                <strong>Tax Deduction:</strong> Up to ₹1,50,000 per year under Section 80C
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-8">Annual Tax Deduction:</div>
+                                <div class="col-4 fw-bold text-success" id="annualDeduction">-</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-8">Tax Saved (30% bracket):</div>
+                                <div class="col-4 fw-bold text-primary" id="annualTaxSaved">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-light">
+                        <h4 class="card-title mb-0">
+                            <i class="fas fa-chart-bar me-2"></i>ELSS Investment Growth Over Time
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="elssChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Loading Spinner -->
+<div class="loading-overlay d-none" id="loadingSpinner">
+    <div class="spinner-container">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-3 text-primary">Calculating your ELSS returns and tax savings...</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/calculator.js') }}"></script>
+{% endblock %} 
